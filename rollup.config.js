@@ -1,0 +1,30 @@
+import babel from 'rollup-plugin-babel'
+import commonjs from 'rollup-plugin-commonjs'
+import json from 'rollup-plugin-json'
+
+export default {
+  input: 'index.js',
+  output: [
+    {
+      file: 'dist/botium-logichook-perfectoreporting-es.js',
+      format: 'es',
+      sourcemap: true
+    },
+    {
+      file: 'dist/botium-logichook-perfectoreporting-cjs.js',
+      format: 'cjs',
+      sourcemap: true
+    }
+  ],
+  plugins: [
+    commonjs({
+      exclude: 'node_modules/**',
+      ignore: ['conditional-runtime-dependency']
+    }),
+    babel({
+      exclude: 'node_modules/**',
+      runtimeHelpers: true
+    }),
+    json()
+  ]
+}
