@@ -27,7 +27,7 @@ module.exports = class PerfectoReportingHooks {
       debug('Found Botium Webdriver Connector instance, activating Perfecto Reporting')
 
       container.perfectoReportingClient = new Reporting.Perfecto.PerfectoReportingClient(new Reporting.Perfecto.PerfectoExecutionContext({
-        tags: [ 'Botium' ],
+        tags: ['Botium'],
         job: {
           jobName: (convo && convo.header && convo.header.testsessionname) || 'Botium Test Session'
         },
