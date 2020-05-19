@@ -66,10 +66,14 @@ module.exports = class PerfectoReportingHooks {
   async onConvoEnd ({ convo, container, transcript }) {
     if (container.perfectoReportingClient) {
       if (transcript.err) {
-        await container.perfectoReportingClient.testStop({
+        const params = {
           status: Reporting.Constants.results.failed,
-          message: transcript.err
-        })
+          message: transcript.err.message
+        }
+        if (transcript.err.cause && transcript.err.cause.prettify) {
+          params.message = transcript.err.message + '\r\n' + transcript.err.cause.prettify()
+        }
+        await container.perfectoReportingClient.testStop(params)
       } else {
         await container.perfectoReportingClient.testStop({
           status: Reporting.Constants.results.passed
