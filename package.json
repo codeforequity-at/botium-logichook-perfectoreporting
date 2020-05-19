@@ -1,6 +1,6 @@
 {
   "name": "botium-logichook-perfectoreporting",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Botium Logic Hook for Perfecto Reporting",
   "main": "dist/botium-logichook-perfectoreporting-cjs.js",
   "module": "dist/botium-logichook-perfectoreporting-es.js",

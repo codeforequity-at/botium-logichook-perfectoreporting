@@ -41,7 +41,7 @@ module.exports = class PerfectoReportingHooks {
               try {
                 await container.pluginInstance.browser.execute(command, params)
               } catch (err) {
-                console.err(`Executing Perfecto Reporting Script failed: ${err.message}`)
+                console.error(`Executing Perfecto Reporting Script failed: ${err.message}`)
               }
             })
           }
