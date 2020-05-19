@@ -10,9 +10,6 @@ module.exports = class PerfectoReportingHooks {
 
   getTag (convo, convoStep) {
     const result = []
-    if (convo && convo.header && convo.header.projectname) {
-      result.push(convo.header.projectname)
-    }
     if (convo && convo.header && convo.header.name) {
       result.push(convo.header.name)
     }
@@ -30,6 +27,13 @@ module.exports = class PerfectoReportingHooks {
       debug('Found Botium Webdriver Connector instance, activating Perfecto Reporting')
 
       container.perfectoReportingClient = new Reporting.Perfecto.PerfectoReportingClient(new Reporting.Perfecto.PerfectoExecutionContext({
+        tags: [ 'Botium' ],
+        job: {
+          jobName: (convo && convo.header && convo.header.testsessionname) || 'Botium Test Session'
+        },
+        project: {
+          projectName: (convo && convo.header && convo.header.projectname) || 'Botium Test Project'
+        },
         webdriver: {
           executeScript: async (command, params) => {
             debug(`Executing Perfecto Reporting Script: ${command} / ${util.inspect(params)}`)
