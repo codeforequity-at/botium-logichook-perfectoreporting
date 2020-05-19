@@ -48,6 +48,7 @@ module.exports = class PerfectoReportingHooks {
         }
       }))
       await container.perfectoReportingClient.testStart(this.getTag(convo))
+      await container.perfectoReportingClient.stepStart(this.getTag(convo, { stepTag: 'begin' }))
     }
   }
 
